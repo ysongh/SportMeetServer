@@ -4,10 +4,15 @@ const bodyParser = require('body-parser');
 
 const db = require('./config/keys').mongoURI;
 
+const userRoutes = require("./routes/user");
+
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
+app.use('/user', userRoutes);
+
 
 app.get('/', (req, res) => res.send('Sport Meet Server'));
 
