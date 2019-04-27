@@ -7,4 +7,6 @@ router.get('/', feedController.getAllFeed);
 
 router.post('/', feedController.addFeed);
 
+router.get('/filter', feedController.filterFeed);
+
 module.exports = router;
