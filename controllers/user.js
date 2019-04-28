@@ -6,6 +6,7 @@ const keys = require('../config/keys');
 
 exports.register = (req, res, next) => {
     const email = req.body.email;
+    let userData;
     
     User.findOne({ email: email })
         .then(user => {
@@ -27,7 +28,25 @@ exports.register = (req, res, next) => {
                         newUser.password = hash;
                         newUser
                             .save()
-                            .then(user => res.json(user))
+                            .then(user => {
+                                userData = user;
+                                const payload = { id: user.id, name: user.name };
+
+                                jwt.sign(
+                                    payload,
+                                    keys.secretOrKey,
+                                    {expiresIn: 3600},
+                                    (err, token) => {
+                                        if(err){
+                                            return res.status(500).json({error: err});
+                                        }
+                                        res.json({
+                                            success: 'Register Success',
+                                            token: 'Bearer ' + token,
+                                            user: userData
+                                        });
+                                });
+                            })
                             .catch(err => console.log(err));
                     });
                 });
