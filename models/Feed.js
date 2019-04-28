@@ -18,6 +18,14 @@ const feedSchema = new Schema({
     goal: {
         type: String,
         require: true
+    },
+    userID: {
+        type: String,
+        require: true
+    },
+    userName: {
+        type: String,
+        require: true
     }
 });
 
