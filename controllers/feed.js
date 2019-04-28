@@ -29,15 +29,13 @@ exports.addFeed = (req, res, next) => {
     const level = req.body.level;
     const city = req.body.city;
     const goal = req.body.goal;
-    const userID = req.user.id;
-    const userName = req.user.name;
+    const userName = req.user.name || "Guest";
 
     const newFeed = new Feed({
         favoriteSport: favoriteSport,
         level: level,
         city: city,
         goal: goal,
-        userID: userID,
         userName: userName
     });
 

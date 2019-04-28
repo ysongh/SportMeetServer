@@ -21,7 +21,6 @@ const feedSchema = new Schema({
     },
     userID: {
         type: String,
-        require: true
     },
     userName: {
         type: String,
