@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 const db = require('./config/keys').mongoURI;
 
@@ -24,6 +25,9 @@ app.use('/user', userRoutes);
 app.use('/feed', feedRoutes);
 
 app.get('/', (req, res) => res.send('Sport Meet Server'));
+
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
 const port = process.env.PORT || 8080;
 
