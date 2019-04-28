@@ -17,6 +17,7 @@ Create a feed
 * Link - https://meetsportserver.herokuapp.com/feed
 * Request - POST
 * Required Fields - favoriteSport(string), level(string), city(string), goal(string)
+* Login is required
 
 Find all feeds
 * Link - https://meetsportserver.herokuapp.com/feed
